@@ -1090,23 +1090,24 @@ Bear in mind that with the introduction of the new V8 engine alongside the new E
 
 <p align="right"><a href="#table-of-contents">⬆ Return to top</a></p>
 
-# `8. Docker Best Practices`
+# &#x202b; `8. טיפים שימושיים ל Docker`
 
-🏅 Many thanks to [Bret Fisher](https://github.com/BretFisher) from whom we learned many of the following practices
+&#x202b; רוב תודות ל [Bret Fisher](https://github.com/BretFisher) ממנו נלמדו הטריקים הבאים 🏅
 
 <br/><br/>
 
-## ![✔] 8.1 Use multi-stage builds for leaner and more secure Docker images
+## &#x202b; ![✔] 8.1 שימוש בבניית multi-stage ליצירת Docker images יותר רזים ומאובטחים
 
+&#x202b;**אמ;לק**
+&#x202b; השתמש בבניית multi-stage בשביל להעתיק רק את התוצרים הנחוצים להרצת האפליקציה.
+&#x202b; הרבה מהתלויות שמשתמשים בהם בזמן הבנייה אינם נחוצים להרצת האפליקציה.
+&#x202b; בעזרת בניית multi-stage ניתן להשתמש בתלויות אלו בזמן בניית האפליקציה בלבד כאשר סביבת הריצה תכיל רק את הדרוש לריצת האפליקציה.
+&#x202b;בניית multi-stage  -היא דרך קלה להיפטר מתוצרים-עודפים ומבעיות אבטחה ב Docker image.
 
+&#x202b;**אחרת**
+&#x202b; Docker images בעלי גודל רב יותר יקחו יותר זמן לבנייה ולשינוע, כלים המשתמשים לבניית האפליקציה עלולים להכיל פרצות אבטחה ו secrets (פרטי מידע רגישים) שמשמשים לתהליך הבנייה עלולים להיחשף.
 
-**אמ;לק**
-השתמש בבניית multi-stage בשביל להעתיק רק את התוצרים הנחוצים להרצת האפליקציה. הרבה מהתלויות שמשתמשים בהם בזמן הבנייה אינם נחוצים להרצת האפליקציה. בעזרת בניית        multi-stage ניתן להשתמש בתלויות אלו בזמן בניית האפליקציה בלבד כאשר סביבת הריצה תכיל רק את הדרוש לריצת האפליקציה. בניית multi-stage  היא דרך קלה להיפטר מתוצרים-עודפים ומבעיות אבטחה ב image.
-
-**אחרת**
-Docker images בעלי גודל רב יותר יקחו יותר זמן לבנייה ולשינוע, כלים המשתמשים לבניית האפליקציה עלולים להכיל פרצות אבטחה ו secrets (פרטי מידע רגישים) שמשמשים לתהליך הבנייה עלולים להיחשף.
-
-### Example Dockerfile for multi-stage builds
+### &#x202b;  דוגמא ל- Dockerfile שמשתמש בבניית- multi-stage
 
 ```dockerfile
 FROM node:14.4.0 AS build
@@ -1125,7 +1126,7 @@ RUN npm ci --production
 CMD [ "node", "dist/app.js" ]
 ```
 
-🔗 [**Read More: Use multi-stage builds**](/sections/docker/multi_stage_builds.md)
+&#x202b; [**לקריאה נוספת: שימוש בבניית multi-stage **](/sections/docker/multi_stage_builds.md) 
 
 <br /><br /><br />
 
